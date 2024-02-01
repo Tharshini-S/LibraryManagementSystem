@@ -1,0 +1,55 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Login extends JFrame implements ActionListener {
+    JLabel l1, l2;
+    JTextField tf1;
+    JPasswordField pf;
+    JButton b1, b2;
+    Login() {
+        setTitle("Library Management System Login");
+        setLayout(null);
+        l1 = new JLabel("Library Management System Login");
+        l1.setForeground(Color.blue);
+        l1.setFont(new Font("Serif", Font.BOLD, 20));
+        l2 = new JLabel("Enter Details:");
+        tf1 = new JTextField();
+        pf = new JPasswordField();
+        b1 = new JButton("Submit");
+        b2 = new JButton("Clear");
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        add(l1);
+        add(l2);
+        add(tf1);
+        add(pf);
+        add(b1);
+        add(b2);
+        l1.setBounds(100, 30, 400, 30);
+        l2.setBounds(80, 70, 200, 30);
+        tf1.setBounds(150, 70, 200, 30);
+        pf.setBounds(150, 110, 200, 30);
+        b1.setBounds(50, 160, 100, 30);
+        b2.setBounds(170, 160, 100, 30);
+        setVisible(true);
+        setSize(400, 300);
+    }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == b1) {
+            String uname = tf1.getText();
+            String pass = pf.getText();
+            if (uname.equals("admin") && pass.equals("admin")) {
+                JOptionPane.showMessageDialog(this, "Login Successful");
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrect login or password");
+            }
+        } else {
+            tf1.setText("");
+            pf.setText("");
+        }
+    }
+    public static void main(String args[]) {
+        new Login();
+    }
+}
